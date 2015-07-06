@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'android-maven'
 
 android {
-    compileSdkVersion 10
+    compileSdkVersion 19
     buildToolsVersion "22.0.1"
 
     defaultConfig {
@@ -23,6 +23,24 @@ android {
         }
         sandbox {
             buildConfigField 'String', 'ENV', '"SANDBOX"'
+        }
+    }
+    
+    defaultPublishConfig "productionRelease"
+    publishNonDefault true
+}
+
+if( android.productFlavors.size() > 0 ) {
+    android.libraryVariants.all { variant ->
+        // Publish a main artifact, otherwise the maven pom is not generated
+        if( android.publishNonDefault && variant.name == android.defaultPublishConfig ) {
+            def bundleTask = tasks["bundle${name.capitalize()}"]
+            artifacts {
+                archives(bundleTask.archivePath) {
+                    classifier null
+                    builtBy bundleTask
+                }
+            }
         }
     }
 }
