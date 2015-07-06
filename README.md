@@ -6,15 +6,23 @@ A example of a Jitpack integration with a library with multiple product flavours
 
 All variants are built and published with different filenames:
 ```gradle
-compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:productionRelease@aar'  
-compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:sandboxRelease@aar'
-compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:sandboxDebug@aar'
-compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:productionDebug@aar'
+repositories {
+ maven { url "https://jitpack.io" }
+}
+
+dependencies {
+  compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:productionRelease@aar'  
+  compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:sandboxRelease@aar'
+  compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:sandboxDebug@aar'
+  compile 'com.github.jitpack-io:android-jitpack-library-example:1.5:productionDebug@aar'
+}
 ```
 
 The default variant is 'productionRelease' and is set using the `defaultPublishConfig` property:
 ```gradle
-compile 'com.github.jitpack-io:android-jitpack-library-example:1.5'
+dependencies {
+  compile 'com.github.jitpack-io:android-jitpack-library-example:1.5'
+}
 ```
 
 
