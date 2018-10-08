@@ -1,4 +1,6 @@
-# android-jitpack-library-example
+# Newer example: https://github.com/jitpack-io/multi-flavor-lib-demo 
+
+## android-jitpack-library-example
 
 A example of a Jitpack integration with a library with multiple product flavours:
  - production (default)
